@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { prisma } from "../../lib/prisma";
 import { z, ZodError } from "zod";
 import { StatusCodes } from "http-status-codes";
-import { hashPassword } from '.././../utils/crypto'
+import { hashPassword } from "../../utils/crypto";
 
 interface CreateUserRequestBody {
   name: string;
@@ -21,11 +21,9 @@ const createUserBodySchema = z.object({
     .min(8, { message: "Password must be at least 8 characters long" }),
 });
 
-export async function createUser(app: FastifyInstance) {
+export async function signUp(app: FastifyInstance) {
   app.post("/user", async (request: FastifyRequest, reply: FastifyReply) => {
     try {
-      console.log(request.body);
-      
       const { name, email, password } = createUserBodySchema.parse(
         request.body as CreateUserRequestBody
       );

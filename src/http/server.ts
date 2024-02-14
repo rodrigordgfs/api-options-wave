@@ -1,6 +1,6 @@
 import fastify from "fastify";
 import cors from '@fastify/cors'
-import { createUser, helthCheck } from "../routes";
+import { signIn, signUp, helthCheck } from "../routes";
 
 const app = fastify();
 
@@ -8,7 +8,8 @@ app.register(cors, {
   origin: '*'
 })
 
-app.register(createUser);
+app.register(signIn);
+app.register(signUp);
 app.register(helthCheck);
 
 app.listen({ port: 3456 }).then(() => {
