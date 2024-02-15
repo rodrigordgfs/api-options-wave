@@ -8,6 +8,7 @@ interface User {
   id: string;
   name: string;
   email: string;
+  image: string | null;
   password: string;
   createdAt: Date;
   updatedAt: Date;
@@ -56,6 +57,7 @@ export async function signIn(app: FastifyInstance) {
         id: user.id,
         name: user.name,
         email: user.email,
+        image: user.image,
       });
     } catch (error) {
       if (error instanceof ZodError) {
