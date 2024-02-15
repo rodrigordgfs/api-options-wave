@@ -1,5 +1,6 @@
+import { helthCheck } from "./helth-check";
 import { signIn } from "./user/get-signin";
 import { signUp } from "./user/post-signup";
-import { helthCheck } from "./helth-check";
+import { updateUser } from "./user/patch-user";
 
-export { signIn, signUp, helthCheck };
+export { helthCheck, signIn, signUp, updateUser };
